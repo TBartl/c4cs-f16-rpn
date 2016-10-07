@@ -1,28 +1,30 @@
+def add(a, b):
+    return a + b
+def subtract(a, b):
+    return a - b
+def multiply(a, b):
+    return a * b
+def divide(a, b):
+    return a / b
+
+operators = {
+    '+': add,
+    '-': subtract,
+    '*': multiply,
+    '/': divide,
+    }
+
 def calculate (arg):
     stack = list()
     for token in arg.split():
-        if (token == "+"):
-            arg1 = stack.pop()
-            arg2 = stack.pop()
-            result = arg1 + arg2
-            stack.append(result)
-        elif (token == "-"):
-            arg2 = stack.pop()
-            arg1 = stack.pop()
-            result = arg1 - arg2
-            stack.append(result)            
-        elif (token == "*"):
-            arg1 = stack.pop()
-            arg2 = stack.pop()
-            result = arg1 * arg2
-            stack.append(result)            
-        elif (token == "/"):
-            arg2 = stack.pop()
-            arg1 = stack.pop()
-            result = arg1 / arg2
-            stack.append(result)
-        else:
+        try:
             stack.append(int(token))
+        except ValueError:
+            arg2 = stack.pop()
+            arg1 = stack.pop()
+            function = operators[token]
+            result = function(arg1, arg2)
+            stack.append(result)            
 
     if (len(stack) != 1):
         raise TypeError
