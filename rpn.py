@@ -1,18 +1,13 @@
-def add(a, b):
-    return a + b
-def subtract(a, b):
-    return a - b
-def multiply(a, b):
-    return a * b
-def divide(a, b):
-    return a / b
+#!/usr/bin/env python3
+
+import operator
 
 operators = {
-    '+': add,
-    '-': subtract,
-    '*': multiply,
-    '/': divide,
-    }
+    '+': add.add,
+    '-': subtract.sub,
+    '*': multiply.mul,
+    '/': divide.truediv,
+}
 
 def calculate (arg):
     stack = list()
