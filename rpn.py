@@ -14,6 +14,8 @@ def calculate (arg):
         else:
             stack.append(int(token))
 
+    if (len(stack) != 1):
+        raise TypeError
     return stack.pop()
 
 def main():
